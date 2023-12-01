@@ -29,7 +29,7 @@ export async function POST({ request }) {
   const checkIfEmailExistsParams = {
     TableName: import.meta.env.VITE_TABLE_NAME,
     Key: {
-      id: { S: hashedEmail }
+      emailHash: { S: hashedEmail } // Changed from 'id' to 'emailHash'
     }
   }
 
@@ -51,7 +51,7 @@ export async function POST({ request }) {
   const params = {
     TableName: import.meta.env.VITE_TABLE_NAME,
     Item: {
-      id: { S: hashedEmail },
+      emailHash: { S: hashedEmail }, // Updated key name
       code: { S: otpCode }
     }
   }
@@ -66,7 +66,7 @@ export async function POST({ request }) {
     Destination: {
       ToAddresses: [email]
     },
-    Source: 'noreply@visiblelabs.org',
+    Source: 'your-email@example.com', // Replace with your verified SES email
     Template: 'VerificationCode',
     TemplateData: JSON.stringify(templateDate)
   }

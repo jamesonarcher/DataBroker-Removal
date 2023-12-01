@@ -20,7 +20,7 @@ export async function POST({ request }) {
   const params = {
     TableName: import.meta.env.VITE_TABLE_NAME,
     Key: {
-      id: { S: hashedEmail }
+      emailHash: { S: hashedEmail }
     }
   }
 
@@ -34,7 +34,7 @@ export async function POST({ request }) {
       const params = {
         TableName: import.meta.env.VITE_TABLE_NAME,
         Key: {
-          id: { S: hashedEmail }
+          emailHash: { S: hashedEmail }
         },
         UpdateExpression: 'SET verified = :verified',
         ExpressionAttributeValues: {

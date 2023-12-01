@@ -30,7 +30,7 @@ export async function GET() {
           const params = {
             TableName: import.meta.env.VITE_TABLE_NAME,
             Key: {
-              id: { S: item.id.S }
+              emailHash: { S: item.emailHash.S }
             }
           }
           const command = new DeleteItemCommand(params)
